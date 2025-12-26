@@ -35,8 +35,12 @@ void Engine_Core::Application::Run()
         BeginDrawing();
         ClearBackground(BLACK);
 
+        rlImGuiBegin();
+
         for (const std::unique_ptr<Layer>& layer : m_LayerStack)
             layer->OnRender();
+
+        rlImGuiEnd();
 
         EndDrawing();
     }
