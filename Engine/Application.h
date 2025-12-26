@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <type_traits>
 #include <vector>
 #include <raylib.h>
 
@@ -24,6 +25,13 @@ namespace Engine_Core
             ~Application();
 
             void Run();
+
+            template<typename TLayer>
+            requires(std::is_base_of_v<Layer, TLayer>)
+            void PushLayer()
+            {
+                m_LayerStack.push_back(std::make_unique<TLayer>());
+            }
         private:
             std::vector<std::unique_ptr<Layer>> m_LayerStack;
     };
