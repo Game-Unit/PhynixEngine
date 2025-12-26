@@ -43,11 +43,13 @@ void Engine_Core::Application::Run()
         rlImGuiEnd();
 
         EndDrawing();
+
+        Engine_Core::Layer::Transition();
     }
 }
 
 Engine_Core::Application& Engine_Core::Application::Get()
-	{
-		assert(s_Application);
-		return *s_Application;
-	}
+{
+	assert(s_Application);
+	return *s_Application;
+}

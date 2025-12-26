@@ -1,10 +1,10 @@
 #pragma once
 
 #include <memory>
+#include <vector>
 
 namespace Engine_Core
 {
-
     class Layer
     {
         public:
@@ -21,7 +21,22 @@ namespace Engine_Core
             {
                 QueueTransition(std::move(std::make_unique<T>(std::forward<Args>(args)...)));
 		    }
+
+			static void Transition();
+
 		private:
+
+            struct Transitions
+            {
+                Layer& originalLayer;
+                Layer& transitionLayer;
+
+                Transitions(Layer& original, Layer& transition)
+                        : originalLayer(original), transitionLayer(transition) {}
+            };
+
 		    void QueueTransition(std::unique_ptr<Layer> toLayer);
+
+			static std::vector<std::unique_ptr<Transitions>> s_transitionQueue;
     };
 }
