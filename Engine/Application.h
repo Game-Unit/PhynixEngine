@@ -32,7 +32,11 @@ namespace Engine_Core
             {
                 m_LayerStack.push_back(std::make_unique<TLayer>());
             }
+
+            static Application& Get();
         private:
             std::vector<std::unique_ptr<Layer>> m_LayerStack;
+
+            friend class Layer;
     };
 }
