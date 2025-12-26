@@ -4,8 +4,6 @@
 #include <raylib.h>
 
 #include "Renderer.h"
-#include "Scene.h"
-#include "Scenes/BaseScene.h"
 
 
 namespace Engine_Core
@@ -17,17 +15,16 @@ namespace Engine_Core
         int hight;
         int targetFPS = GetMonitorRefreshRate(GetCurrentMonitor());
         Color sceenColor = WHITE;
-        std::unique_ptr<Scene> activeScene = std::make_unique<BaseScene>();
     };
 
     class Application
     {
         public:
-            Application(ApplicationSettings& settings);
+            Application(const ApplicationSettings& settings = ApplicationSettings());
+            ~Application();
         private:
-            void Update();
+            void Run();
 
-            ApplicationSettings& m_settings;
             std::unique_ptr<Renderer> m_renderer;
     };
 }

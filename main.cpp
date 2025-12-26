@@ -7,5 +7,5 @@ int main()
     settings.width = 1920;
     settings.hight = 1080;
 
-    Engine_Core::Application app = {settings};
+    Engine_Core::Application app(settings);
 }

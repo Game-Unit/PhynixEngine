@@ -9,13 +9,11 @@ namespace Engine_Core
     class Renderer
     {
         public:
-            Renderer(ApplicationSettings& settings);
+            Renderer();
             ~Renderer();
 
             void Render();
 
         private:
-
-        ApplicationSettings& m_settings;
     };
 }

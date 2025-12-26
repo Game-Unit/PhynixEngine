@@ -1,10 +1,9 @@
 #include "Renderer.h"
-#include "Application.h"
 #include <raylib.h>
 #include <imgui.h>
 #include <rlImGui.h>
 
-Engine_Core::Renderer::Renderer(ApplicationSettings& settings) : m_settings(settings)
+Engine_Core::Renderer::Renderer()
 {
     rlImGuiSetup(true);
 }
@@ -12,13 +11,9 @@ Engine_Core::Renderer::Renderer(ApplicationSettings& settings) : m_settings(sett
 void Engine_Core::Renderer::Render()
 {
     BeginDrawing();
-    ClearBackground(m_settings.sceenColor);
-
-    m_settings.activeScene->Update();
+    ClearBackground(BLACK);
 
     rlImGuiBegin();
-
-    m_settings.activeScene->RenderUI();
 
     rlImGuiEnd();
 
