@@ -8,4 +8,5 @@ int main()
     settings.hight = 1080;
 
     Engine_Core::Application app(settings);
+    app.Run();
 }

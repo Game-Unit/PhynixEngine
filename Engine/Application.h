@@ -1,9 +1,10 @@
 #pragma once
 
 #include <memory>
+#include <vector>
 #include <raylib.h>
 
-#include "Renderer.h"
+#include "Layer.h"
 
 
 namespace Engine_Core
@@ -14,7 +15,6 @@ namespace Engine_Core
         int width;
         int hight;
         int targetFPS = GetMonitorRefreshRate(GetCurrentMonitor());
-        Color sceenColor = WHITE;
     };
 
     class Application
@@ -22,9 +22,9 @@ namespace Engine_Core
         public:
             Application(const ApplicationSettings& settings = ApplicationSettings());
             ~Application();
-        private:
-            void Run();
 
-            std::unique_ptr<Renderer> m_renderer;
+            void Run();
+        private:
+            std::vector<std::unique_ptr<Layer>> m_LayerStack;
     };
 }
