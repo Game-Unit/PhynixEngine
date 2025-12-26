@@ -74,7 +74,6 @@ target_link_libraries(rlimgui PUBLIC imgui raylib)
 
 # --- Source Files ---
 ADD_LIBRARY(${PROJECT_NAME} SHARED
-    main.cpp
     "Engine/Application.cpp"
 )
 
